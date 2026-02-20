@@ -1,6 +1,10 @@
 # Tiptap Extension: GlobalDragHandle
 <a href="https://www.npmjs.com/package/tiptap-extension-global-drag-handle"><img alt="NPM Downloads" src="https://img.shields.io/npm/dw/tiptap-extension-global-drag-handle"></a>
 
+## Compatibility
+
+This release targets TipTap `3.20.0`.
+
 
 ## Install
 
