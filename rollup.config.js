@@ -1,12 +1,11 @@
-import sizes from '@atomico/rollup-plugin-sizes';
-import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import fs from 'node:fs';
 import autoExternal from 'rollup-plugin-auto-external';
+import esbuild from 'rollup-plugin-esbuild';
 import sourcemaps from 'rollup-plugin-sourcemaps';
-import typescript from 'rollup-plugin-typescript2';
 
-import pkg from './package.json';
+const pkg = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
 
 export default {
   external: [/@tiptap\/pm\/.*/, '@tiptap/core'],
@@ -39,23 +38,9 @@ export default {
     sourcemaps(),
     resolve(),
     commonjs(),
-    babel({
-      babelHelpers: 'bundled',
-      exclude: './node_modules/**',
-    }),
-    sizes(),
-    typescript({
-      tsconfig: './tsconfig.json',
-      tsconfigOverride: {
-        compilerOptions: {
-          baseUrl: '.',
-          declaration: true,
-          paths: {
-            './*': ['src/*'],
-          },
-        },
-        include: null,
-      },
+    esbuild({
+      include: /\.[jt]s$/,
+      target: 'es2022',
     }),
   ],
 };

@@ -386,13 +386,14 @@ export function DragHandlePlugin(
   });
 }
 
-const GlobalDragHandle = Extension.create({
+const GlobalDragHandle = Extension.create<GlobalDragHandleOptions>({
   name: 'globalDragHandle',
 
   addOptions() {
     return {
       dragHandleWidth: 20,
       scrollTreshold: 100,
+      dragHandleSelector: undefined,
       excludedTags: [],
       customNodes: [],
     };

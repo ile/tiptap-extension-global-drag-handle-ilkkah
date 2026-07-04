@@ -4,15 +4,16 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "target": "es2022",
-    "allowJs": true,
+    "allowJs": false,
     "moduleDetection": "force",
     "isolatedModules": true,
     /* Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
     /* If transpiling with TypeScript: */
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "ESNext",
+    "rootDir": "src",
     "outDir": "./dist",
     "sourceMap": true,
     /* AND if you're building for a library: */
